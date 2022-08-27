@@ -1,0 +1,6 @@
+[0m[[0m[33mwarn[0m] [0m[0m/Users/pal/work/textProcessor/app/views/index.scala.html:6:46: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method upload,[0m
+[0m[[0m[33mwarn[0m] [0m[0mor remove the empty argument list from its definition (Java-defined methods are exempt).[0m
+[0m[[0m[33mwarn[0m] [0m[0mIn Scala 3, an unapplied method like this will be eta-expanded into a function.[0m
+[0m[[0m[33mwarn[0m] [0m[0m @helper.form(action = routes.HomeController.upload, Symbol("enctype") -> "multipart/form-data") {[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                             ^[0m
+[0m[[0m[33mwarn[0m] [0m[0mone warning found[0m
