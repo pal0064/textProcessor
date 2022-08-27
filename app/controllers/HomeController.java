@@ -1,5 +1,9 @@
 package controllers;
 
+import edu.stanford.nlp.ling.CoreLabel;
+import edu.stanford.nlp.pipeline.CoreDocument;
+import edu.stanford.nlp.pipeline.CoreSentence;
+import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import play.data.Form;
 import play.i18n.Messages;
 import play.i18n.MessagesApi;
@@ -13,6 +17,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.util.Properties;
+
 import edu.stanford.nlp.simple.Token;
 import edu.stanford.nlp.simple.Document;
 import edu.stanford.nlp.simple.Sentence;
@@ -51,30 +57,35 @@ public class HomeController extends Controller {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        Document doc = new Document(content);
         long numberOfSentences = 0;
         long numberOfWords = 0;
         long numberOfNouns = 0;
-        for (Sentence sent : doc.sentences()) {
+        Properties props = new Properties();
+        props.setProperty("annotators", "tokenize,ssplit,pos");
+        props.setProperty("coref.algorithm", "neural");
+        StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
+        CoreDocument document = new CoreDocument(content);
+        pipeline.annotate(document);
+        for (CoreSentence sentence : document.sentences()) {
             numberOfSentences+=1;
-            numberOfWords+= sent.words().size();
-            for( Token token : sent.tokens()){
+            for( CoreLabel token : sentence.tokens()){
                 numberOfWords+=1;
-                if(token.posTag().startsWith("NN")){
+                if(token.tag().startsWith("NN")){
                     numberOfNouns+=1;
-                    System.out.println(token.word() + " " +  token.posTag());
                 }
 
             }
         }
-        String summary = String.join("\n",
-                "Summary:",
+         String summary = String.join(
+                "\n",
+                 "\n\nSummary:\n",
                 "Number of Sentences : " + numberOfSentences,
                 "Number of Words : "+numberOfWords,
                 "Number of Nouns : " + numberOfNouns
-                );
-         return ok(  content + summary);
+        );
+
+
+        return ok(  content + summary);
     }
 
     private long operateOnTempFile(File file) throws IOException {
