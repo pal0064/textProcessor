@@ -7,7 +7,8 @@ lazy val root = (project in file("."))
       libraryDependencies ++= Seq(
           guice,
         "edu.stanford.nlp" % "stanford-corenlp" % "4.5.0",
-        "edu.stanford.nlp" % "stanford-corenlp" % "4.5.0" classifier "models"
+        "edu.stanford.nlp" % "stanford-corenlp" % "4.5.0" classifier "models",
+         "com.opencsv" % "opencsv" % "5.6"
       ),
     libraryDependencies += guice,
     testOptions += Tests.Argument(TestFrameworks.JUnit, "-a", "-v"),

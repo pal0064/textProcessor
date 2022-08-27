@@ -4,6 +4,7 @@
 
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index(request: Request)
+GET     /download                   controllers.HomeController.downloadFile(request: Request)
 
 POST    /upload                     controllers.HomeController.upload(request:Request)
 
