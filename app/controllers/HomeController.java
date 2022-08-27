@@ -11,12 +11,11 @@ import javax.inject.Singleton;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.charset.StandardCharsets;
+import edu.stanford.nlp.simple.Token;
+import edu.stanford.nlp.simple.Document;
+import edu.stanford.nlp.simple.Sentence;
 /**
  * This class uses a custom body parser to change the upload type.
  */
@@ -53,8 +52,29 @@ public class HomeController extends Controller {
             e.printStackTrace();
         }
 
-        System.out.println(content);
-         return ok(  content );
+        Document doc = new Document(content);
+        long numberOfSentences = 0;
+        long numberOfWords = 0;
+        long numberOfNouns = 0;
+        for (Sentence sent : doc.sentences()) {
+            numberOfSentences+=1;
+            numberOfWords+= sent.words().size();
+            for( Token token : sent.tokens()){
+                numberOfWords+=1;
+                if(token.posTag().startsWith("NN")){
+                    numberOfNouns+=1;
+                    System.out.println(token.word() + " " +  token.posTag());
+                }
+
+            }
+        }
+        String summary = String.join("\n",
+                "Summary:",
+                "Number of Sentences : " + numberOfSentences,
+                "Number of Words : "+numberOfWords,
+                "Number of Nouns : " + numberOfNouns
+                );
+         return ok(  content + summary);
     }
 
     private long operateOnTempFile(File file) throws IOException {

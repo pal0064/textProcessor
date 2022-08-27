@@ -4,6 +4,11 @@ lazy val root = (project in file("."))
     name := """play-java-fileupload-example""",
     version := "1.0-SNAPSHOT",
     scalaVersion := "2.13.8",
+      libraryDependencies ++= Seq(
+          guice,
+        "edu.stanford.nlp" % "stanford-corenlp" % "4.5.0",
+        "edu.stanford.nlp" % "stanford-corenlp" % "4.5.0" classifier "models"
+      ),
     libraryDependencies += guice,
     testOptions += Tests.Argument(TestFrameworks.JUnit, "-a", "-v"),
     javacOptions ++= Seq("-Xlint:unchecked", "-Xlint:deprecation", "-Werror")
