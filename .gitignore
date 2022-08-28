@@ -28,3 +28,7 @@ target
 .DS_Store
 project/target
 sbt-dist
+.husky
+node_modules
+package-lock.json
+package.json
