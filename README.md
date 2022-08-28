@@ -1,9 +1,8 @@
-# to do
-- Embellishments:  Documentation website, auto format, code style, commit msg checker
-- Show errors 
-- - Validation - If you have experience with web development then write some basic JavaScript to check the validity of the input (e.g., that there's something there, that it has at least one sentence, etc.).
+# TextProcessor
+
 
 - [Overview](#overview)
+- [Features](#features)
 - [Getting Started](#getting-started)
     - [Requirements](#requirements)
     - [Executing Instructions](#executing-instructions)
@@ -16,6 +15,14 @@ This project can be used to create summary stats from a text or a text file. It 
 webform for inputs. Outputs can be published on a UI or in a csv file.
 
 ![alt text](docs/images/TextProcessor.drawio.png?raw=true)
+
+## Features
+- Most of the classes and functions are documented
+- MakeFile provides abstraction for CICD (backend tools can be changed without breaking CICD files) 
+- Docker Support for platform independence and kubernetes deployment
+- Commit Message checking via commitlint
+- Auto code formatting while compiling
+- Test cases of NLP Service
 
 ### Requirements
 - java 11
@@ -41,6 +48,10 @@ webform for inputs. Outputs can be published on a UI or in a csv file.
 - ```make publish``` for publishing image to the remote repository
 
 # TODO 
+
+- Embellishments:  Documentation website
+- Show errors
+- Validation - If you have experience with web development then write some basic JavaScript to check the validity of the input (e.g., that there's something there, that it has at least one sentence, etc.).
 - Deployment on Kubernetes (Need a cloud account)
 
 ## Changelog
