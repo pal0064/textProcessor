@@ -1,6 +1,5 @@
 # to do
-- Visualization - based on the backend statistics, display the results of the text entered.  A basic html page is fine or, if you want to get fancy (and you have experience), you could create some visualization (e.g., radar graph).
-- Embellishments:  Documentation website, auto format, heroku, code style, commit msg checker
+- Embellishments:  Documentation website, auto format, code style, commit msg checker
 - Show errors 
 - - Validation - If you have experience with web development then write some basic JavaScript to check the validity of the input (e.g., that there's something there, that it has at least one sentence, etc.).
 
@@ -22,20 +21,27 @@ webform for inputs. Outputs can be published on a UI or in a csv file.
 - java 11
 - sbt
 - Makefile
+- docker
 
 ### Executing Instructions
 - There are multiple ways to execute this application
   - Simplest ways is to pull the image from repository and run. It currently supports platform linux/arm64.
-    - `make run-remote-image`
-    - to stop `make stop-remote-image-container`
+    - ```make run-remote-image```
+    - to stop ```make stop-remote-image-container```
   - To build and run the local image  
-    - `make build-docker; make run-docker`
-    - to stop `make stop-docker`
+    - ```
+      make build-docker
+      make run-docker
+      ```
+    - to stop ```make stop-docker```
   - To run without docker 
-    - `make run`
-- `make compile` for compiling
-- `make test` for running test cases. #todo Adding test cases for controllers and other classes
-- `make publish` for publishing image to the remote repository
+    - ```make run```
+- ```make compile``` for compiling
+- ```make test``` for running test cases. #todo Adding test cases for controllers and other classes
+- ```make publish``` for publishing image to the remote repository
+
+# TODO 
+- Deployment on Kubernetes (Need a cloud account)
 
 ## Changelog
 
