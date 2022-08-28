@@ -1,5 +1,4 @@
 # to do
-- Deployment  - docker etc.
 - Visualization - based on the backend statistics, display the results of the text entered.  A basic html page is fine or, if you want to get fancy (and you have experience), you could create some visualization (e.g., radar graph).
 - Embellishments:  Documentation website, auto format, heroku, code style, commit msg checker
 - Show errors 
@@ -22,10 +21,21 @@ webform for inputs. Outputs can be published on a UI or in a csv file.
 ### Requirements
 - java 11
 - sbt
+- Makefile
 
 ### Executing Instructions
-- Simply run `sbt run` in the directory of a project.
-- `sbt test` for running test cases. #todo Adding test cases for controllers and other classes
+- There are multiple ways to execute this application
+  - Simplest ways is to pull the image from repository and run. It currently supports platform linux/arm64.
+    - `make run-remote-image`
+    - to stop `make stop-remote-image-container`
+  - To build and run the local image  
+    - `make build-docker; make run-docker`
+    - to stop `make stop-docker`
+  - To run without docker 
+    - `make run`
+- `make compile` for compiling
+- `make test` for running test cases. #todo Adding test cases for controllers and other classes
+- `make publish` for publishing image to the remote repository
 
 ## Changelog
 

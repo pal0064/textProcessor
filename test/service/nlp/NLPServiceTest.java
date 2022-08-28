@@ -9,14 +9,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * This is to test NLP service operations
- */
+/** This is to test NLP service operations */
 public class NLPServiceTest {
 
-  /**
-   * To test if getSummary function is working fine for single sentence
-   */
+  /** To test if getSummary function is working fine for single sentence */
   @Test
   public void getSummaryForSingleSentence() {
     String content =
@@ -28,9 +24,7 @@ public class NLPServiceTest {
     Assert.assertTrue(EqualsBuilder.reflectionEquals(expectedSummary, actualSummary));
   }
 
-  /**
-   * To test if getSummary function is working fine for multiple sentences
-   */
+  /** To test if getSummary function is working fine for multiple sentences */
   @Test
   public void getSummaryForMultipleSentences() {
     String content =
