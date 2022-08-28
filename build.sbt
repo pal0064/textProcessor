@@ -1,7 +1,7 @@
 lazy val root = (project in file("."))
   .enablePlugins(PlayJava)
   .settings(
-    name := """play-java-fileupload-example""",
+    name := """text-processor""",
     version := "1.0-SNAPSHOT",
     scalaVersion := "2.13.8",
       libraryDependencies ++= Seq(

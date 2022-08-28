@@ -1,5 +1,4 @@
 # to do
-- Tests  - 
 - Deployment  - docker etc.
 - Visualization - based on the backend statistics, display the results of the text entered.  A basic html page is fine or, if you want to get fancy (and you have experience), you could create some visualization (e.g., radar graph).
 - Embellishments:  Documentation website, auto format, heroku, code style, commit msg checker
@@ -12,8 +11,6 @@
     - [Executing Instructions](#executing-instructions)
 - [Changelog](#changelog)
 - [Authors](#authors)
-- [License](#license)
-
 --------------
 
 ## Overview
@@ -37,7 +34,4 @@ See the [CHANGELOG](CHANGELOG.md) for all changes since project inception
 ## Authors
 
 * Ankit Pal ([@pal0064](http://www.github.com/pal0064)) 
-
-See also the list of
-[contributors](https://github.com/UAL-RE/LD-Cool-P/contributors) who participated in this project.
 
