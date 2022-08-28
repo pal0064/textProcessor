@@ -13,5 +13,6 @@ lazy val root = (project in file("."))
       ),
     libraryDependencies += guice,
     testOptions += Tests.Argument(TestFrameworks.JUnit, "-a", "-v"),
-    javacOptions ++= Seq("-Xlint:unchecked", "-Xlint:deprecation", "-Werror")
+    javacOptions ++= Seq("-Xlint:unchecked", "-Xlint:deprecation", "-Werror"),
+    javafmtOnCompile := true
   )
