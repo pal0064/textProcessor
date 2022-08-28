@@ -2,7 +2,7 @@ NAME := text-processor
 REMOTE_IMAGE_NAME:= pal0064/$(NAME)
 VERSION := 0.0.1
 
-.PHONY: build-docker run-docker run test compile clean publish run-remote-image stop-remote-image-container
+.PHONY: build-docker run-docker run test compile clean publish run-remote-image stop-remote-image-container generate-changelogs
 
 build-docker:
 	docker build --rm -f Dockerfile -t $(NAME):$(VERSION) .
@@ -38,3 +38,7 @@ run-remote-image:
 stop-remote-image-container:
 	@docker stop remote-$(NAME)
 	@docker rm remote-$(NAME)
+
+generate-changelogs:
+	git-chglog -o CHANGELOG.md
+

@@ -17,18 +17,21 @@ webform for inputs. Outputs can be published on a UI or in a csv file.
 ![alt text](docs/images/TextProcessor.drawio.png?raw=true)
 
 ## Features
-- Most of the classes and functions are documented
+- Most of the code is documented
 - MakeFile provides abstraction for CICD (backend tools can be changed without breaking CICD files) 
 - Docker Support for platform independence and kubernetes deployment
 - Commit Message checking via commitlint
 - Auto code formatting while compiling
 - Test cases of NLP Service
+- Automated Changelogs using git-chglog
 
 ### Requirements
-- java 11
-- sbt
+- Java 11
+- Sbt
 - Makefile
-- docker
+- Docker
+- [Changelogs](https://github.com/git-chglog/git-chglog)
+- [Commitlint](https://github.com/conventional-changelog/commitlint)
 
 ### Executing Instructions
 - There are multiple ways to execute this application
