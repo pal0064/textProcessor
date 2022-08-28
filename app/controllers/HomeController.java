@@ -14,7 +14,7 @@ import play.i18n.MessagesApi;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
-import service.nlptools.NLPService;
+import service.nlp.NLPService;
 import util.file.csv.CSVFileUtils;
 import views.html.index;
 
@@ -24,7 +24,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/** This class uses a custom body parser to change the upload type. */
+/** This class is the controller for the home page of the web application. */
 @Singleton
 public class HomeController extends Controller {
   private final Form<FormData> form;
@@ -32,7 +32,7 @@ public class HomeController extends Controller {
   private final play.data.FormFactory formFactory;
   private final CSVFileUtils csvFileUtils;
   private final NLPService nlpService;
-  private MessagesApi messagesApi;
+  private final MessagesApi messagesApi;
   private final Logger logger = LoggerFactory.getLogger(getClass());
 
   @Inject
@@ -50,12 +50,31 @@ public class HomeController extends Controller {
     this.nlpService = nlpService;
   }
 
+  /**
+   * Returns a web form to get input from the user
+   *
+   * @param request a http request for the homepage
+   * @return the web form for text processing
+   */
   public Result index(Http.Request request) {
     Form<FormData> form = formFactory.form(FormData.class).bindFromRequest(request);
     Messages messages = this.messagesApi.preferred(request);
     return ok(index.render(form, request, messages));
   }
-  /** This method uses MyMultipartFormDataBodyParser as the body parser */
+
+  /**
+   * Returns NLP summary stats via csv file or screen after binding the http request to the
+   * FormData. Also, it checks for the errors in webform
+   *
+   * @see models.Summary
+   * @see FormData
+   * @param request a http request having webform data
+   * @return NLP Summary stats of the input text
+   * @throws IOException
+   * @throws CsvRequiredFieldEmptyException
+   * @throws CsvDataTypeMismatchException
+   */
+  // TODO Better error handling and return error codes
   public Result submit(Http.Request request)
       throws IOException, CsvRequiredFieldEmptyException, CsvDataTypeMismatchException {
 
@@ -66,18 +85,31 @@ public class HomeController extends Controller {
       return badRequest(index.render(boundForm, request, messages));
     } else {
       FormData data = boundForm.get();
-      return outputHandler(data);
+      return process(data);
     }
   }
 
-  public Result outputHandler(FormData data)
+  /**
+   * This method gets the input content based on input type (file or text) and NLP service generates
+   * stats from the content Based on the output type, it returns a file or the webpage containing
+   * summary stats.
+   *
+   * @param data Submitted webform
+   * @return NLP Summary stats of the input text
+   * @throws IOException
+   * @throws CsvRequiredFieldEmptyException
+   * @throws CsvDataTypeMismatchException
+   */
+  // TODO More output file formats, customization of NLP library properties,Using Enums and
+  // Constants in
+  // place of hard-coded variables,and bulk file handling etc.
+  public Result process(FormData data)
       throws IOException, CsvRequiredFieldEmptyException, CsvDataTypeMismatchException {
     String content = data.getContent();
     Summary summary = nlpService.getSummary(content);
     if ("FILE".equals(data.getOutputType())) {
       List<Summary> summaries = new ArrayList<Summary>();
       summaries.add(summary);
-      System.out.println(summary.organizations);
       return ok(csvFileUtils.<Summary>createCsvFile("summary", summaries));
     }
     return ok(

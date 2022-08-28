@@ -5,18 +5,12 @@ import play.data.validation.Constraints;
 import play.libs.Files.TemporaryFile;
 import play.mvc.Http;
 
-import javax.validation.Constraint;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 import static util.file.FileUtils.readFile;
 
-/**
- * A form processing DTO that maps to the widget form.
- *
- * <p>Using a class specifically for form binding reduces the chances of a parameter tampering
- * attack and makes code clearer, because you can define constraints against the class.
- */
+/** A form processing DTO that maps to the FormData. */
 public class FormData {
 
   private String inputText;
@@ -51,6 +45,14 @@ public class FormData {
     this.outputType = outputType;
   }
 
+  /**
+   * It returns the input content based on inputFile or inputText if both are provided then
+   * inputText is used.
+   *
+   * @return input content to be processed
+   * @throws IOException
+   */
+  // TODO handling of a bulk file
   public String getContent() throws IOException {
     String content;
     if (StringUtils.isBlank(inputText) || StringUtils.isEmpty(inputText)) {

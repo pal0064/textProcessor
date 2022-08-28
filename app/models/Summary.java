@@ -2,11 +2,11 @@ package models;
 
 import com.opencsv.bean.CsvBindAndSplitByName;
 import com.opencsv.bean.CsvBindByName;
-import com.opencsv.bean.CsvNumber;
 import org.apache.commons.text.WordUtils;
 
 import java.util.List;
 
+/** This is model of the NLP Summary stat */
 public class Summary {
   @CsvBindByName(column = "Number Of Sentences")
   public long numberOfSentences;
@@ -28,6 +28,7 @@ public class Summary {
     this.organizations = organizations;
   }
 
+  /** @return Summary stats text to be presented on UI */
   public String getText() {
     String summary =
         String.join(

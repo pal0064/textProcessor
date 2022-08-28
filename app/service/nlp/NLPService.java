@@ -1,4 +1,4 @@
-package service.nlptools;
+package service.nlp;
 
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.pipeline.CoreDocument;
@@ -8,7 +8,18 @@ import models.Summary;
 
 import java.util.*;
 
+/** This is used to provide NLP related operations */
 public class NLPService {
+
+  /**
+   * This uses the CoreNLP Api which is more customizable than the Simple NLP API Using only
+   * required annotators increases the speed of processing. Customization of algorithm is possible,
+   * could be added in the web form as a input
+   *
+   * @param content input content to be processed
+   * @return NLP Library annotated document
+   */
+  // TODO NLP properties customization
   public CoreDocument getAnnotatedDocument(String content) {
     Properties props = new Properties();
     props.setProperty("annotators", "tokenize,ssplit,pos,lemma,ner");
@@ -19,6 +30,15 @@ public class NLPService {
     return document;
   }
 
+  /**
+   * This generates the final summary stats from the annotated document words() or tags() function
+   * could have been used but using tokens() is better in terms of processing.
+   *
+   * @param content input content to be processed
+   * @return NLP summary stats
+   */
+  //  TODO to support a large number of stat variables,
+  //   this should be broken down into multiple functions to improve readability
   public Summary getSummary(String content) {
     CoreDocument document = getAnnotatedDocument(content);
     long numberOfSentences = 0;

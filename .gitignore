@@ -25,5 +25,5 @@ hs_err_pid*
 target
 .bsp
 .idea
-
+.DS_Store
 project/target

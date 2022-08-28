@@ -1,5 +1,4 @@
 # to do
-- Documentation - Include a README in markup that outlines what you did.
 - Tests  - 
 - Deployment  - docker etc.
 - Visualization - based on the backend statistics, display the results of the text entered.  A basic html page is fine or, if you want to get fancy (and you have experience), you could create some visualization (e.g., radar graph).
@@ -10,7 +9,7 @@
 - [Overview](#overview)
 - [Getting Started](#getting-started)
     - [Requirements](#requirements)
-    - [Installation Instructions](#installation-instructions)
+    - [Executing Instructions](#executing-instructions)
 - [Changelog](#changelog)
 - [Authors](#authors)
 - [License](#license)
@@ -18,12 +17,18 @@
 --------------
 
 ## Overview
+This project can be used to create summary stats from a text or a text file. It provides a 
+webform for inputs. Outputs can be published on a UI or in a csv file.
 
-## Getting Started
+![alt text](docs/images/TextProcessor.drawio.png?raw=true)
 
 ### Requirements
+- java 11
+- sbt
 
-### Installation Instructions
+### Executing Instructions
+- Simply run `sbt run` in the directory of a project.
+- `sbt test` for running test cases. #todo Adding test cases for controllers and other classes
 
 ## Changelog
 
@@ -31,7 +36,7 @@ See the [CHANGELOG](CHANGELOG.md) for all changes since project inception
 
 ## Authors
 
-* Ankit Pal. ([@pal0064](http://www.github.com/pal0064)) 
+* Ankit Pal ([@pal0064](http://www.github.com/pal0064)) 
 
 See also the list of
 [contributors](https://github.com/UAL-RE/LD-Cool-P/contributors) who participated in this project.
