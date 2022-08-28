@@ -51,10 +51,10 @@ webform for inputs. Outputs can be published on a UI or in a csv file.
 - ```make publish``` for publishing image to the remote repository
 
 # TODO 
-
-- Embellishments:  Documentation website
-- Show errors
-- Validation - If you have experience with web development then write some basic JavaScript to check the validity of the input (e.g., that there's something there, that it has at least one sentence, etc.).
+- Visualizations of NLP Summary Stats
+- Embellishments: Documentation website
+- Show errors on the form
+- Validation : Input text should hav at least one sentence etc.
 - Deployment on Kubernetes (Need a cloud account)
 
 ## Changelog
