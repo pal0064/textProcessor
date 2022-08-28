@@ -18,10 +18,7 @@ public class CSVFileUtils {
     File file = File.createTempFile(filePrefix, ".csv");
     Writer writer = new FileWriter(file);
     StatefulBeanToCsv<T> sbc =
-        new StatefulBeanToCsvBuilder<T>(writer)
-            .withApplyQuotesToAll(false)
-            .withSeparator(CSVWriter.DEFAULT_SEPARATOR)
-            .build();
+        new StatefulBeanToCsvBuilder<T>(writer).withApplyQuotesToAll(false).build();
     sbc.write(data);
     writer.close();
     return file;

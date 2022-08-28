@@ -1,9 +1,11 @@
 package models;
 
 import org.apache.commons.lang3.StringUtils;
+import play.data.validation.Constraints;
 import play.libs.Files.TemporaryFile;
 import play.mvc.Http;
 
+import javax.validation.Constraint;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
@@ -21,7 +23,7 @@ public class FormData {
 
   private Http.MultipartFormData.FilePart<TemporaryFile> inputFile;
 
-  private String outputType;
+  @Constraints.Required private String outputType;
 
   public FormData() {}
 

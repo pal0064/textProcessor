@@ -4,6 +4,7 @@ import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import models.FormData;
 import models.Summary;
+import org.apache.commons.text.WordUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import play.data.Form;
@@ -76,8 +77,10 @@ public class HomeController extends Controller {
     if ("FILE".equals(data.getOutputType())) {
       List<Summary> summaries = new ArrayList<Summary>();
       summaries.add(summary);
+      System.out.println(summary.organizations);
       return ok(csvFileUtils.<Summary>createCsvFile("summary", summaries));
     }
-    return ok(views.html.summary.render(data.getInputText() + summary.getText(), assetsFinder));
+    return ok(
+        views.html.summary.render(WordUtils.wrap(content, 120) + summary.getText(), assetsFinder));
   }
 }
