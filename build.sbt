@@ -8,7 +8,8 @@ lazy val root = (project in file("."))
           guice,
         "edu.stanford.nlp" % "stanford-corenlp" % "4.5.0",
         "edu.stanford.nlp" % "stanford-corenlp" % "4.5.0" classifier "models",
-         "com.opencsv" % "opencsv" % "5.6"
+         "com.opencsv" % "opencsv" % "5.6",
+        "org.apache.commons" % "commons-lang3" % "3.12.0"
       ),
     libraryDependencies += guice,
     testOptions += Tests.Argument(TestFrameworks.JUnit, "-a", "-v"),

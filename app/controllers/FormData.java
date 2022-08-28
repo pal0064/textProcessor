@@ -1,8 +1,9 @@
 package controllers;
 
+import play.api.libs.Files;
 import play.data.validation.Constraints;
+import play.mvc.*;
 import play.libs.Files.TemporaryFile;
-import play.mvc.Http.MultipartFormData.FilePart;
 
 import java.io.File;
 
@@ -17,7 +18,7 @@ public class FormData {
 
     private String inputText;
 
-    private FilePart<TemporaryFile> inputFile;
+    private Http.MultipartFormData.FilePart<TemporaryFile> inputFile;
 
     private String outputType;
 
@@ -33,11 +34,11 @@ public class FormData {
         this.inputText = inputText;
     }
 
-    public FilePart<TemporaryFile> getInputFile() {
+    public Http.MultipartFormData.FilePart<TemporaryFile> getInputFile() {
         return inputFile;
     }
 
-    public void setInputFile(FilePart<TemporaryFile> inputFile) {
+    public void setInputFile(Http.MultipartFormData.FilePart<TemporaryFile> inputFile) {
         this.inputFile = inputFile;
     }
 
