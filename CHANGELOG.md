@@ -8,10 +8,6 @@
 
 ### Feat
 
-* **core:** Added initial project - file upload sample
-
-### Feat
-
 * **core:** added commitlint
 * **core:** Added docker and deployment guide
 * **core:** Added testcases and documentation
@@ -25,6 +21,7 @@
 * **core:** Change Stanford Simple API to CoreNLP API
 * **core:** Added stanford-nlp library
 * **core:**  Added code to read text file
+* **core:** Added initial project - file upload sample
 
 ### Fix
 
