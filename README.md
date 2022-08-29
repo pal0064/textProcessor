@@ -12,7 +12,9 @@
 
 ## Overview
 This project can be used to create summary stats from a text or a text file. It provides a 
-webform for inputs. Outputs can be published on a UI or in a csv file.
+webform for inputs. Outputs can be published on a UI or in a csv file. I have chosen the csv format
+just for simplicity. Much better formats for analytics are parquet, avro, and ORC. But they are not
+well supported by all the downstream applications. Csv is most popular and well supported.
 
 ![alt text](docs/images/TextProcessor.drawio.png?raw=true)
 
@@ -54,8 +56,9 @@ webform for inputs. Outputs can be published on a UI or in a csv file.
 - Visualizations of NLP Summary Stats
 - Embellishments: Documentation website
 - Show errors on the form
-- Validation : Input text should hav at least one sentence etc.
+- Validation via js : Input text should have at least one sentence etc.
 - Deployment on Kubernetes (Need a cloud account)
+- Github actions for cicd
 
 ## Changelog
 
